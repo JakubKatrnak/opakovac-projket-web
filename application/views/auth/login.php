@@ -1,3 +1,9 @@
+
+ <head>
+    <link href="assets\bootstrap\css\bootstrap.min.css"rel="stylesheet">
+</head>
+
+
 <h1><?php echo lang('login_heading');?></h1>
 <p><?php echo lang('login_subheading');?></p>
 
@@ -24,5 +30,3 @@
   <p><?php echo form_submit('submit', lang('login_submit_btn'));?></p>
 
 <?php echo form_close();?>
-
-<p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>

@@ -54,7 +54,10 @@ $route['stol_18_svetova'] = 'Cetba_controller/stol_18_svetova';
 $route['stol_19_svetova'] = 'Cetba_controller/stol_19_svetova';
 $route['stol_20_svetova'] = 'cetba_controller/stol_20_svetova';
 $route['stol_20_ceska'] = 'Cetba_controller/stol_20_ceska';
+$route['pridej_knihu'] = 'Cetba_controller/pridej_knihu';
 
-$route['default_controller'] = 'auth';
+$route['auth'] = 'auth';
+
+$route['default_controller'] = 'Cetba_controller/stol_18_svetova';
 $route['404_override'] = '';
 

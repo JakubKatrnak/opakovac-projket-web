@@ -1,4 +1,4 @@
- <head>
+<head>
     <title>Knihy</title>
     
     <link rel="icon" type="image/png" href="obrazky\icon_book.png"/>
@@ -16,7 +16,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a id="menu" href="<?php echo base_url("auth"); ?>" >login </a>		
+                            <a id="menu" href="<?php echo base_url("pridej_knihu"); ?>" >+</a>		
                         </li>
                         <li class="nav-item">
                             <a id="menu" href="<?php echo base_url("auth/logout"); ?>" >logout</a>  
