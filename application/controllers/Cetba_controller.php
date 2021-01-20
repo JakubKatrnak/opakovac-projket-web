@@ -103,10 +103,42 @@ public function pridej_knihu() {
     
     
     $data['polozky'] = $this->cetba_model->get_menu_polozky();
+    $data['error'] = "Přidej knížku";
 
 $this->load->view('layout/'.$header, $data);
-$this->load->view('content/pridej_knihu');
+$this->load->view('content/pridej_knihu', $data);
 $this->load->view('layout/paticka');
 
 }
+
+public function uloz_knihu(){
+
+  $header = "hlavicka";
+
+  if (!$this->ion_auth->logged_in())
+  {
+    $header = "hlavicka";
+  }
+  else
+  $header = "hlavicka_logged_in"; 
+  
+  
+  $n=$this->input->post('nazev_knihy');
+  $a=$this->input->post('autor');
+  $c=$this->input->post('prebal');
+  $p=$this->input->post('obdobi_idobdobi');
+
+  
+  
+  $que=$this->db->query("insert into knihy (nazev_knihy, autor, prebal, obdobi_idobdobi) values(?, ?, ?, ?)", [$n, $a, $c, $p]);
+
+  $data['polozky'] = $this->cetba_model->get_menu_polozky();
+  $data['error'] = "Knížka přídána!";
+
+  $this->load->view('layout/'.$header, $data);
+  $this->load->view('content/pridej_knihu', $data);
+  $this->load->view('layout/paticka');
+
+}
+
 }
