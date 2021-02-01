@@ -122,18 +122,27 @@ public function uloz_knihu(){
   else
   $header = "hlavicka_logged_in"; 
   
+  $this->form_validation->set_rules('nazev_knihy', 'Název Knihy', 'required');
+  $this->form_validation->set_rules('autor', 'Autor', 'required');
+  $this->form_validation->set_rules('prebal', 'Přebal', 'required', 'valid_url');
   
-  $n=$this->input->post('nazev_knihy');
-  $a=$this->input->post('autor');
-  $c=$this->input->post('prebal');
-  $p=$this->input->post('obdobi_idobdobi');
+  if ($this->form_validation->run() == FALSE)
+  {
+    $data['error'] = "Ujistěte se, že jsou všechna pole vyplněná a jedná se o platnout url adresu u přebalu knihy!";
+  }
+  else
+  {
+    $n=$this->input->post('nazev_knihy');
+    $a=$this->input->post('autor');
+    $c=$this->input->post('prebal');
+    $p=$this->input->post('obdobi_idobdobi');
+    
+    $que=$this->db->query("insert into knihy (nazev_knihy, autor, prebal, obdobi_idobdobi) values(?, ?, ?, ?)", [$n, $a, $c, $p]);
 
-  
-  
-  $que=$this->db->query("insert into knihy (nazev_knihy, autor, prebal, obdobi_idobdobi) values(?, ?, ?, ?)", [$n, $a, $c, $p]);
+    $data['error'] = "Knížka přídána!"; 
+  }
 
   $data['polozky'] = $this->cetba_model->get_menu_polozky();
-  $data['error'] = "Knížka přídána!";
 
   $this->load->view('layout/'.$header, $data);
   $this->load->view('content/pridej_knihu', $data);
